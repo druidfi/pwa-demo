@@ -15,13 +15,13 @@ export function App({ store }) {
       </div>
 
       <div className="row">
-        <div className="col-3">
+        <div className="col-md-3 col-12">
           <FeedSummary store={store} />
 
           <FeedManager store={store} />
         </div>
 
-        <div className="col-9">
+        <div className="col-md-9 col-12">
           <FeedItems store={store}/>
         </div>
       </div>
