@@ -13,7 +13,9 @@ export function FeedSummary({ store }) {
           <a
             href="#root"
             key={title}
-            onClick={() => {
+            onClick={event => {
+              event.preventDefault();
+
               if (feed.open) {
                 store.openFeed(null);
 
@@ -29,7 +31,7 @@ export function FeedSummary({ store }) {
               });
             }}
             className={classes(
-              'list-group-item list-group-item-action',
+              'list-group-item list-group-item-action clickable',
               { active: open, 'border-bottom-0': index === store.feeds.length - 1 },
             )}
           >

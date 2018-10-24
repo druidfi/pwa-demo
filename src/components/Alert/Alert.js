@@ -10,12 +10,12 @@ export function Alert({ store }) {
           return null;
         }
 
-        const className = `alert alert-${store.alert.type} top-alert text-center shadow-lg w-100`;
+        const className = `alert alert-${store.alert.type} top-alert clickable text-center shadow-lg w-100`;
 
         return (
-          <div onClick={() => store.clearAlert()} className={className}>
+          <button onClick={() => store.clearAlert()} className={className}>
             {store.alert.message}
-          </div>
+          </button>
         );
       }}
     />
