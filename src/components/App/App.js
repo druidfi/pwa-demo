@@ -4,6 +4,8 @@ import { FeedSummary } from '../FeedSummary/FeedSummary';
 import { Alert } from '../Alert/Alert';
 import { FeedItems } from '../FeedItems';
 import { FeedManager } from '../FeedManager';
+import { requestNotificationPermissions } from '../../functions/requestNotificationPermissions';
+import { startUpdateCycle } from '../../functions/startUpdateCycle';
 
 export function App({ store }) {
   return (
@@ -16,9 +18,9 @@ export function App({ store }) {
 
       <div className="row">
         <div className="col-md-3 col-12">
-          <FeedSummary store={store} />
-
           <FeedManager store={store} />
+
+          <FeedSummary store={store} />
         </div>
 
         <div className="col-md-9 col-12">
@@ -34,15 +36,19 @@ export const StatefulApp = compose(
     componentWillMount() {
       this.props.store.refreshFeeds();
 
-      window.setTimeout(() => {
-        this.props.store.refreshFeeds();
+      requestNotificationPermissions().then(
+        () => this.stopUpdateCycle = startUpdateCycle(600, () => {
+          this.props.store.refreshFeeds();
 
-        if ('serviceWorker' in navigator) {
-          navigator.serviceWorker
-            .getRegistration()
-            .then(registration => registration.showNotification('Feeds refreshed!'));
-        }
-      }, 1000 * 60 * 10);
+          new Notification('Feeds updated!');
+        }),
+        () => this.stopUpdateCycle = startUpdateCycle(600, () => this.props.store.refreshFeeds())
+      );
+    },
+    componentWillUnmount() {
+      if (this.stopUpdateCycle) {
+        this.stopUpdateCycle();
+      }
     }
   }),
 )(App);

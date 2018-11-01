@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from 'classnames';
-import moment from 'moment';
 import { Observer } from 'mobx-react';
+import { TimeAgo } from '../TimeAgo';
 
 export function FeedSummary({ store }) {
   const render = () => (
@@ -54,7 +54,7 @@ export function FeedSummary({ store }) {
                 <div>
                     {title}
 
-                    <small className="d-block">{moment(date).fromNow()}</small>
+                  <small className="d-block"><TimeAgo>{date}</TimeAgo></small>
                 </div>
               </div>
 
