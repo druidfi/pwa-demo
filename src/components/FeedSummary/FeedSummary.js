@@ -58,7 +58,7 @@ export function FeedSummary({ store }) {
                 </div>
               </div>
 
-              <span className={classes('oi', { 'oi-link-intact': connected, 'oi-link-broken': !connected })} />
+              <span className={classes('align-self-center oi', { 'oi-link-intact': connected, 'oi-link-broken': !connected })} />
             </div>
           </a>
         );
