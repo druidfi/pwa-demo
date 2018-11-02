@@ -6,20 +6,20 @@ export const requestNotificationPermissions = () => {
       return;
     }
 
-    if (Notification.permission !== 'granted') {
-      Notification.requestPermission(function (permission) {
-        if (permission !== "granted") {
-          reject();
-
-          return;
-        }
-
-        resolve();
-      });
+    if (Notification.permission === 'granted') {
+      resolve();
 
       return;
     }
 
-    resolve();
-  })
+    Notification.requestPermission(permission => {
+      if (permission !== 'granted') {
+        reject();
+
+        return;
+      }
+
+      resolve();
+    });
+  });
 };
