@@ -32,7 +32,7 @@ export function FeedSummary({ store }) {
             }}
             className={classes(
               'list-group-item list-group-item-action clickable',
-              { active: open, 'border-bottom-0': index === store.feeds.length - 1 },
+              { active: open, 'border-top-0': index === 0 },
             )}
           >
             <div className="d-flex justify-content-between">
