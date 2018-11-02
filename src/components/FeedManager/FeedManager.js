@@ -8,6 +8,7 @@ export function FeedManager({ url, setUrl, store }) {
       <input
         type="text"
         name="url"
+        id="url"
         className="form-control rounded-0"
         placeholder="URL"
         value={url}
