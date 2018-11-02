@@ -4,8 +4,10 @@ import { compose, withState } from 'recompose';
 export function FeedManager({ url, setUrl, store }) {
   return (
     <div className="input-group">
+      <label htmlFor="url" className="sr-only">URL</label>
       <input
         type="text"
+        name="url"
         className="form-control rounded-0"
         placeholder="URL"
         value={url}
@@ -14,7 +16,7 @@ export function FeedManager({ url, setUrl, store }) {
 
       <div className="input-group-append">
         <button
-          className="btn btn-outline-primary rounded-0"
+          className="btn btn-primary rounded-0"
           onClick={event => {
             event.preventDefault();
 
