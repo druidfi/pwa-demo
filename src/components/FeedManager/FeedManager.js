@@ -17,7 +17,7 @@ export function FeedManager({ url, setUrl, store }) {
 
       <div className="input-group-append">
         <button
-          className="btn btn-primary rounded-0"
+          className="btn btn-outline-primary rounded-0"
           onClick={event => {
             event.preventDefault();
 
