@@ -22,7 +22,7 @@ export function App({ store, loading }) {
         </div>
 
         <div className="row">
-          <div className="col-md-3 col-12">
+          <div className="col-md-3 col-12 mt-3">
             <FeedManager store={store} />
 
             <FeedSummary store={store} />
