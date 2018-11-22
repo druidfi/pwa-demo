@@ -3,21 +3,22 @@ import classes from 'classnames';
 import { Observer } from 'mobx-react';
 import { TimeAgo } from '../TimeAgo';
 
-export function FeedSummary({ store }) {
+export function FeedList({ store }) {
   const render = () => (
     <div className="list-group list-group-flush">
       {store.feeds.map((feed, index) => {
-        const { title, open, date, connected } = feed;
+        const { id, title, date, connected } = feed;
+        const open = feed === store.openFeed;
 
         return (
           <a
             href="#root"
-            key={title}
+            key={id}
             onClick={event => {
               event.preventDefault();
 
-              if (feed.open) {
-                store.openFeed(null);
+              if (open) {
+                store.removeOpenFeed();
 
                 return;
               }
@@ -27,13 +28,10 @@ export function FeedSummary({ store }) {
                   store.showDangerAlert('Failed to refresh feed.');
                 }
 
-                store.openFeed(feed);
+                store.setOpenFeed(feed);
               });
             }}
-            className={classes(
-              'list-group-item list-group-item-action clickable',
-              { active: open, 'border-top-0': index === 0 },
-            )}
+            className={classes('list-group-item list-group-item-action clickable', { active: open, 'border-top-0': index === 0 })}
           >
             <div className="d-flex justify-content-between">
               <div className="d-flex justify-content-between">
@@ -44,10 +42,7 @@ export function FeedSummary({ store }) {
 
                       store.removeFeed(feed);
                     }}
-                    className={classes(
-                      'btn btn-sm oi oi-x',
-                      { 'btn-outline-light': open, 'btn-outline-dark': !open },
-                    )}
+                    className={classes('btn btn-sm oi oi-x', { 'btn-outline-light': open, 'btn-outline-dark': !open })}
                   />
                 </div>
 

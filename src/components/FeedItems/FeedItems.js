@@ -7,18 +7,31 @@ import { TimeAgo } from '../TimeAgo';
 export function FeedItems({ store }) {
   return (
     <div className="list-group list-group-flush">
-      {store.getOpenFeed() && store.getOpenFeed().items.map(({ title, open, date, link }) => (
-        <a key={title} href={link} className="list-group-item list-group-item-action" target="_blank" rel="noopener noreferrer">
-          {title}
+      {store.openFeed && store.openFeed.items.map(article => {
+        const { id, title, date } = article;
 
-          <small className="d-block"><TimeAgo>{date}</TimeAgo></small>
-        </a>
-      ))}
+        return (
+          <a
+            key={id}
+            href="#root"
+            className="list-group-item list-group-item-action"
+            onClick={event => {
+              event.preventDefault();
+
+              store.setOpenArticle(article);
+            }}
+          >
+            {title}
+
+            <small className="d-block"><TimeAgo>{date}</TimeAgo></small>
+          </a>
+        );
+      })}
     </div>
   );
 }
 
 export const FeedItemsWithLoader = compose(
   observer,
-  branch(({ store }) => !!(store.getOpenFeed() && store.getOpenFeed().loading), renderComponent(Loader)),
+  branch(({ store }) => !!(store.openFeed && store.openFeed.loading), renderComponent(Loader)),
 )(FeedItems);

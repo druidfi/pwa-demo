@@ -13,7 +13,7 @@ export function Alert({ store }) {
         const className = `alert alert-${store.alert.type} top-alert clickable text-center shadow-lg w-100`;
 
         return (
-          <button onClick={() => store.clearAlert()} className={className}>
+          <button onClick={() => store.removeAlert()} className={className}>
             {store.alert.message}
           </button>
         );
