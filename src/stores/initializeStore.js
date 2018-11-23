@@ -8,7 +8,11 @@ const loadStoreFromLocalStorage = () => {
     return Store.create();
   }
 
-  return Store.create(initialState);
+  try {
+    return Store.create(initialState);
+  } catch (exception) {
+    return Store.create();
+  }
 };
 
 export const initializeStore = () => {
