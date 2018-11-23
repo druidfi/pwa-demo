@@ -15,7 +15,7 @@ export function App({ store, loading }) {
     <SplashScreen loading={loading}>
       <Navbar />
 
-      <div className="container">
+      <div className="container overflow-x-hide">
         <div className="row justify-content-center">
           <div className="col-md-6 col-12">
             <Alert store={store} />
@@ -23,7 +23,7 @@ export function App({ store, loading }) {
         </div>
 
         {!store.openArticle && (
-          <div className="row">
+          <div className="row animated faster slideInRight">
             <div className="col-md col-12 mt-3">
               <FeedManager store={store} />
 
@@ -37,7 +37,7 @@ export function App({ store, loading }) {
         )}
 
         {store.openArticle && (
-          <div className="row">
+          <div className="row animated faster slideInLeft">
             <div className="col-12">
               <Article store={store} />
             </div>
@@ -55,7 +55,7 @@ export const StatefulApp = compose(
       this.props.store.refreshFeeds();
 
       requestNotificationPermissions().then(
-        // This can end update an open article away, so commented for now.
+        // This can update an open article away from the store, which breaks references, so it's commented for now.
         // () => this.stopUpdateCycle = startUpdateCycle(600, () => {
         //   this.props.store.refreshFeeds();
         //
