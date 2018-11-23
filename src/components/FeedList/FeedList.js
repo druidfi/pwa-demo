@@ -25,7 +25,7 @@ export function FeedList({ store }) {
 
               feed.refresh().then(success => {
                 if (!success) {
-                  store.showDangerAlert('Failed to refresh feed.');
+                  store.setAlert('Failed to refresh feed.');
                 }
 
                 store.setOpenFeed(feed);
@@ -40,6 +40,7 @@ export function FeedList({ store }) {
                     onClick={event => {
                       event.stopPropagation();
 
+                      store.removeOpenFeed();
                       store.removeFeed(feed);
                     }}
                     className={classes('btn btn-sm oi oi-x', { 'btn-outline-light': open, 'btn-outline-dark': !open })}

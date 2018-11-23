@@ -5,7 +5,7 @@ import { TimeAgo } from '../TimeAgo/TimeAgo';
 export function Article({ store }) {
   const article = store.openArticle;
   const render = () => (
-    <div className="card rounded-0 mt-3">
+    <div className="card border-0 mt-3">
       {article.image && <img className="card-img-top" src={article.image} alt="" />}
 
       <div className="card-body">

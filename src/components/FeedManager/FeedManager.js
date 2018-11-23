@@ -10,7 +10,7 @@ export function FeedManager({ url, setUrl, store }) {
     feed.refresh().then(success => {
       if (!success) {
         store.setAlert('Failed to add feed.');
-        store.removeOpenFeed();
+        store.removeFeed(feed);
       }
     });
 

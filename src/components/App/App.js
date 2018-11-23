@@ -3,11 +3,10 @@ import { compose, lifecycle, withState } from 'recompose';
 import { observer } from 'mobx-react';
 import { FeedList } from '../FeedList/FeedList';
 import { Alert } from '../Alert/Alert';
-import { Navbar } from '../Navbar/Navbar';
+import { Navbar } from '../Navbar';
 import { FeedItems } from '../FeedItems';
 import { FeedManager } from '../FeedManager';
 import { requestNotificationPermissions } from '../../functions/requestNotificationPermissions';
-import { startUpdateCycle } from '../../functions/startUpdateCycle';
 import { SplashScreen } from '../SplashScreen';
 import { Article } from '../Article/Article';
 
@@ -16,30 +15,30 @@ export function App({ store, loading }) {
     <SplashScreen loading={loading}>
       <Navbar />
 
-      <div className="container-fluid">
+      <div className="container">
         <div className="row justify-content-center">
-          <div className="col-4">
+          <div className="col-md-6 col-12">
             <Alert store={store} />
           </div>
         </div>
 
         {!store.openArticle && (
           <div className="row">
-            <div className="col-md-3 col-12 mt-3">
+            <div className="col-md col-12 mt-3">
               <FeedManager store={store} />
 
               <FeedList store={store} />
             </div>
 
-            <div className="col-md-9 col-12">
+            <div className="col-md col-12">
               <FeedItems store={store}/>
             </div>
           </div>
         )}
 
         {store.openArticle && (
-          <div className="row justify-content-center">
-            <div className="col-md-4 col-12">
+          <div className="row">
+            <div className="col-12">
               <Article store={store} />
             </div>
           </div>
@@ -56,12 +55,13 @@ export const StatefulApp = compose(
       this.props.store.refreshFeeds();
 
       requestNotificationPermissions().then(
-        () => this.stopUpdateCycle = startUpdateCycle(600, () => {
-          this.props.store.refreshFeeds();
-
-          new Notification('Feeds updated!');
-        }),
-        () => this.stopUpdateCycle = startUpdateCycle(600, () => this.props.store.refreshFeeds())
+        // This can end update an open article away, so commented for now.
+        // () => this.stopUpdateCycle = startUpdateCycle(600, () => {
+        //   this.props.store.refreshFeeds();
+        //
+        //   new Notification('Feeds updated!');
+        // }),
+        // () => this.stopUpdateCycle = startUpdateCycle(600, () => this.props.store.refreshFeeds())
       );
     },
     componentDidMount() {
