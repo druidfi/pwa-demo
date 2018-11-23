@@ -11,3 +11,13 @@ $primary: #ff2400;
 .overflow-x-hide {
   overflow-x: hidden;
 }
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    .animation-breakpoint#{$infix} {
+      animation-name: none !important;
+    }
+  }
+}

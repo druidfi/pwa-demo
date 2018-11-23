@@ -23,7 +23,7 @@ export function App({ store, loading }) {
         </div>
 
         {!store.openArticle && (
-          <div className="row animated faster slideInRight">
+          <div className="row animated animation-breakpoint-md faster slideInRight">
             <div className="col-md col-12 mt-3">
               <FeedManager store={store} />
 
@@ -37,7 +37,7 @@ export function App({ store, loading }) {
         )}
 
         {store.openArticle && (
-          <div className="row animated faster slideInLeft">
+          <div className="row animated animation-breakpoint-md faster slideInLeft">
             <div className="col-12">
               <Article store={store} />
             </div>
