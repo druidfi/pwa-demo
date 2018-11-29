@@ -10,7 +10,9 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => res.send('Ping!'));
+app.get('/', (expressRequest, expressResponse) => {
+  expressResponse.send('Ping!');
+});
 
 app.post('/rss', (expressRequest, expressResponse) => {
   request(expressRequest.body.url, (error, response, body) => {
