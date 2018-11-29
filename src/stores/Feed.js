@@ -10,9 +10,6 @@ export const Feed = types.model({
   // Fetched data
   id: types.identifier,
   title: types.maybe(types.string),
-  image: types.maybe(types.string),
-  link: types.maybe(types.string),
-  description: types.maybe(types.string),
   date: types.maybe(types.string),
   items: types.optional(types.array(Article), []),
 }).actions(self => ({

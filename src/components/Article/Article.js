@@ -13,7 +13,7 @@ export function Article({ store }) {
           <h5 className="card-title">{article.title}</h5>
         </a>
 
-        <p className="card-text">{article.description}</p>
+        <div className="card-text" dangerouslySetInnerHTML={{ __html: article.description }} />
 
         <p className="card-text">
           <small className="text-muted">Last updated <TimeAgo>{article.date}</TimeAgo></small>
