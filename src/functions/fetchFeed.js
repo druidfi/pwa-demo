@@ -1,4 +1,7 @@
-export const fetchFeed = url => fetch(url).then(response => response.text())
+const proxyUrl = `${window.location.protocol}//${window.location.hostname}:3001/rss`;
+
+export const fetchFeed = url => fetch(proxyUrl, { method: 'post', body: JSON.stringify({ url }), headers: { 'Content-Type': 'application/json' } })
+  .then(response => response.text())
   .then(text => new DOMParser().parseFromString(text, 'text/xml'))
   .then(xml => ({
     title: xml.querySelector('rss channel title').textContent,
