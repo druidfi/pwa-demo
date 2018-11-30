@@ -14,7 +14,6 @@ firebase.initializeApp({
 });
 
 app.get('/:token', (expressRequest, expressResponse) => {
-  console.log(expressRequest.params.token);
   firebase.messaging()
     .send({
       notification: {
