@@ -11,6 +11,7 @@
 // opt-in, read http://bit.ly/CRA-PWA.
 
 import firebase from 'firebase/app';
+import 'firebase/messaging';
 
 const isLocalhost = Boolean(
   window.location.hostname === 'localhost' ||
