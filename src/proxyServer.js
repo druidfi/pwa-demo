@@ -14,7 +14,7 @@ app.get('/', (expressRequest, expressResponse) => {
   expressResponse.send('Ping!');
 });
 
-app.post('/rss', (expressRequest, expressResponse) => {
+app.post('/', (expressRequest, expressResponse) => {
   request(expressRequest.body.url, (error, response, body) => {
     expressResponse.type('application/xml');
     expressResponse.send(body);
