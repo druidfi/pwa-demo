@@ -21,4 +21,4 @@ app.post('/rss', (expressRequest, expressResponse) => {
   });
 });
 
-app.listen(port, () => console.log(`RSS proxy server listening on port ${port}!`));
+app.listen(port, () => console.log(`Proxy server listening on port ${port}!`));
