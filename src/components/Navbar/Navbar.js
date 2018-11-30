@@ -25,28 +25,21 @@ export function Navbar({ open, setOpen, store }) {
             <a className="nav-link disabled" href="/profile">Profile & Settings</a>
           </li>
 
-          <li className="nav-item sr-only">
-            <textarea value={store.token} ref={textarea => this.textArea = textarea} readOnly />
-          </li>
-
-          <li className="nav-item">
-            <button
-              className="btn btn-link nav-link"
-              onClick={() => {
-                this.textArea.select();
-                document.execCommand('copy');
-              }}
-            >
-              Copy Token
-            </button>
-          </li>
-
           <li className="nav-item">
             <a className="nav-link" href="https://www.druid.fi/en/contact" target="_blank" rel="noopener noreferrer">
               Contact Us
             </a>
           </li>
         </ul>
+
+        <form className="form">
+          <input
+            className="form-control"
+            value={store.token}
+            placeholder="Waiting for token"
+            readOnly
+          />
+        </form>
       </div>
     </nav>
   );
