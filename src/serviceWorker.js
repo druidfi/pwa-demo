@@ -10,6 +10,8 @@
 // To learn more about the benefits of this model and instructions on how to
 // opt-in, read http://bit.ly/CRA-PWA.
 
+import firebase from 'firebase/app';
+
 const isLocalhost = Boolean(
   window.location.hostname === 'localhost' ||
   // [::1] is the IPv6 localhost address.
@@ -31,7 +33,7 @@ export function register(config) {
     }
 
     window.addEventListener('load', () => {
-      const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
+      const swUrl = `${process.env.PUBLIC_URL}/custom-service-worker.js`;
 
       if (isLocalhost) {
         // This is running on localhost. Let's check if a service worker still exists or not.
@@ -54,6 +56,21 @@ function registerValidSW(swUrl, config) {
   navigator.serviceWorker
     .register(swUrl)
     .then(registration => {
+      firebase.initializeApp({
+        apiKey: 'AIzaSyAZBMd3oSBBevdPdpIjNXvA0cgIRIfUpSU',
+        authDomain: 'pwa-demo-9beea.firebaseapp.com',
+        databaseURL: 'https://pwa-demo-9beea.firebaseio.com',
+        projectId: 'pwa-demo-9beea',
+        storageBucket: 'pwa-demo-9beea.appspot.com',
+        messagingSenderId: '731478400269'
+      });
+
+      firebase.messaging().useServiceWorker(registration);
+
+      if (config && config.onRegister) {
+        firebase.messaging().getToken().then(token => config.onRegister(registration, token));
+      }
+
       registration.onupdatefound = () => {
         const installingWorker = registration.installing;
 

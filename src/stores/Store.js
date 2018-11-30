@@ -10,6 +10,7 @@ export const Store = types.model({
   feeds: types.array(Feed),
   openFeed: types.maybe(types.reference(Feed)),
   openArticle: types.maybe(types.reference(Article)),
+  token: types.maybe(types.string),
 }).actions(self => ({
   setAlert: (message, type = 'danger') => {
     self.alert = Alert.create({ message, type });
@@ -35,5 +36,8 @@ export const Store = types.model({
   },
   removeOpenArticle: () => {
     self.openArticle = undefined;
+  },
+  setToken: token => {
+    self.token = token;
   },
 }));

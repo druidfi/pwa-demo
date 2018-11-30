@@ -13,7 +13,7 @@ import { Article } from '../Article/Article';
 export function App({ store, loading }) {
   return (
     <SplashScreen loading={loading}>
-      <Navbar />
+      <Navbar store={store} />
 
       <div className="container overflow-x-hide">
         <div className="row justify-content-center">
