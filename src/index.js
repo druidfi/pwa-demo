@@ -4,8 +4,11 @@ import './index.scss';
 import * as serviceWorker from './serviceWorker';
 import { App } from './components/App';
 import { initializeStore } from './stores/initializeStore';
+import { initializeFirebase } from './functions/initializeFirebase';
 
 const store = initializeStore();
+
+initializeFirebase();
 
 ReactDOM.render(<App store={store} />, document.getElementById('root'));
 
