@@ -59,7 +59,7 @@ export const StatefulApp = compose(
         () => firebase.messaging().onMessage(({ notification }) => {
           new Notification(notification.title);
         }),
-        // This can update an open article away from the store, which breaks references, so it's commented for now.
+        // This can update an open article out of the store, which breaks references, so it's commented for now.
         // () => this.stopUpdateCycle = startUpdateCycle(600, () => {
         //   this.props.store.refreshFeeds();
         //
