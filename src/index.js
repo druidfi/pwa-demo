@@ -16,5 +16,5 @@ ReactDOM.render(<App store={store} firebase={firebase} />, document.getElementBy
 // Learn more about service workers: http://bit.ly/CRA-PWA
 serviceWorker.register({
   firebase,
-  // onRegister: (registration, token) => store.setToken(token),
+  onRegister: (registration, token) => store.setToken(token),
 });
