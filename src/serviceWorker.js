@@ -31,7 +31,8 @@ export function register(config) {
     }
 
     window.addEventListener('load', () => {
-      const swUrl = `${process.env.PUBLIC_URL}/custom-service-worker.js`;
+      const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
+      // const swUrl = `${process.env.PUBLIC_URL}/custom-service-worker.js`;
 
       if (isLocalhost) {
         // This is running on localhost. Let's check if a service worker still exists or not.
@@ -54,9 +55,8 @@ function registerValidSW(swUrl, config) {
   navigator.serviceWorker
     .register(swUrl)
     .then(registration => {
-      config.firebase.messaging().useServiceWorker(registration);
-
       if (config && config.onRegister) {
+        config.firebase.messaging().useServiceWorker(registration);
         config.firebase.messaging().getToken().then(token => config.onRegister(registration, token));
       }
 
