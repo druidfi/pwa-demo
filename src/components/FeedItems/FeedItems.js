@@ -32,6 +32,6 @@ export function FeedItems({ store }) {
 }
 
 export const FeedItemsWithLoader = compose(
-  observer,
   branch(({ store }) => !!(store.openFeed && store.openFeed.loading), renderComponent(Loader)),
+  observer,
 )(FeedItems);
