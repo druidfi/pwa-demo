@@ -1,5 +1,4 @@
 import React from 'react';
-import firebase from 'firebase/app';
 import { compose, lifecycle, withState } from 'recompose';
 import { observer } from 'mobx-react';
 import { FeedList } from '../FeedList/FeedList';
@@ -56,7 +55,7 @@ export const StatefulApp = compose(
       this.props.store.refreshFeeds();
 
       requestNotificationPermissions().then(
-        () => firebase.messaging().onMessage(({ notification }) => {
+        () => this.props.firebase.messaging().onMessage(({ notification }) => {
           new Notification(notification.title);
         }),
         // This can update an open article out of the store, which breaks references, so it's commented for now.

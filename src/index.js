@@ -7,12 +7,11 @@ import { initializeStore } from './stores/initializeStore';
 import { initializeFirebase } from './functions/initializeFirebase';
 
 const store = initializeStore();
+const firebase = initializeFirebase();
 
-initializeFirebase();
-
-ReactDOM.render(<App store={store} />, document.getElementById('root'));
+ReactDOM.render(<App store={store} firebase={firebase} />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.register({ onRegister: (registration, token) => store.setToken(token)});
+serviceWorker.register({ firebase, onRegister: (registration, token) => store.setToken(token)});
