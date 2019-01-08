@@ -1,8 +1,0 @@
-[[redirects]]
-  from = "/rss/*"
-  to = "https://pwa-demo-backend.druid.fi/rss/:splat"
-  status = 200
-[[redirects]]
-  from = "/push/*"
-  to = "https://pwa-demo-backend.druid.fi/push/:splat"
-  status = 200

@@ -1,0 +1,2 @@
+/push/*     https://pwa-demo-backend.druid.fi/push:splat    200
+/rss/*      https://pwa-demo-backend.druid.fi/rss:splat     200
