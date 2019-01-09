@@ -8,6 +8,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const request = require('request');
 const cors = require('cors');
+const serverless = require('serverless-http');
 
 const app = express();
 
@@ -26,4 +27,4 @@ app.post('/', (expressRequest, expressResponse) => {
     });
 });
 
-module.exports = app;
+module.exports.handler = serverless(app);
