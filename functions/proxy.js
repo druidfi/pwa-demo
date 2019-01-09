@@ -1,5 +1,9 @@
 'use strict'
 
+/**
+ * @see https://www.netlify.com/docs/functions/
+ */
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const request = require('request');

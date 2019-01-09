@@ -1,2 +1,4 @@
 /push/*     https://pwa-demo-backend.druid.fi/push:splat    200
-/rss/*      https://pwa-demo-backend.druid.fi/rss:splat     200
+#/rss/*      https://pwa-demo-backend.druid.fi/rss:splat     200
+/rss	    /.netlify/functions/proxy	200
+#/push	    /.netlify/functions/push	200
