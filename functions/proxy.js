@@ -16,15 +16,16 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.get('/', (expressRequest, expressResponse) => {
-    expressResponse.send('Ping!');
+app.get('/', (req, res) => {
+    res.send('Ping!');
 });
 
-app.post('/', (expressRequest, expressResponse) => {
-    request(expressRequest.body.url, (error, response, body) => {
-        expressResponse.type('application/xml');
-        expressResponse.send(body);
+app.post('/', (req, res) => {
+    request(req.body.url, (error, response, body) => {
+        res.type('application/xml');
+        res.send(body);
     });
 });
 
+module.exports = app;
 module.exports.handler = serverless(app);
