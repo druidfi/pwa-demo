@@ -1,4 +1,7 @@
+[Settings]
+ID = "pwa-demo-druidfi"
+
 [build]
-  command = "yarn run build"
+  command = "yarn install && yarn run build"
   publish = "build/"
   functions = "functions"
