@@ -1,5 +1,5 @@
-/push/*     https://pwa-demo-druidfi.netlify.com/push:splat    200
+#/push/*     https://pwa-demo-druidfi.netlify.com/push:splat    200
 #/rss/*     https://pwa-demo-druidfi.netlify.com/rss:splat     200
 #/rss	    /.netlify/functions/proxy	200
-/rss        https://pwa-demo.druid.fi/proxy  200
+#/rss        https://pwa-demo.druid.fi/proxy  200
 #/push	    /.netlify/functions/push	200
